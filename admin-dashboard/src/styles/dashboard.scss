@@ -48,19 +48,19 @@
         position: relative;
         @include square(5rem);
         border-radius: 50%;
-        flex: none;
         display: grid;
         place-items: center;
         margin-left: 0.5rem;
-        background-color: #25c90f;
+        background-color: aquamarine;
         &::before {
-            position: absolute;
-            @include square(3rem);
-            background-color: #fff;
-            border-radius: 100%;
+          content: "";
+          position: absolute;
+          @include square(3rem);
+          background-color: #fff;
+          border-radius: 100%;
         }
         span {
-            position: relative;
+          position: relative;
         }
       }
     }

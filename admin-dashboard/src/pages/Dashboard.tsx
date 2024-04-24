@@ -54,8 +54,8 @@ const WidgetItem = ({
       percent > 0 ? <span className="green"><HiTrendingUp /> +{percent}%{""}</span> : <span className="red"><HiTrendingDown /> {percent}%{""}</span>
     }
   </div>
-  <div className="widgetCircle">
-    <span color={color}>{percent}%</span>
+  <div className="widgetCircle" style={{background: `conic-gradient(${color} ${(Math.abs(percent / 100) * 360)}deg, rgb(255, 255, 255) 0)`}}>
+    <span style={{color}}>{percent}%</span>
   </div>
 </article>;
 
