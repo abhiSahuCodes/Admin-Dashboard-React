@@ -7,6 +7,7 @@ import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
 
+
 const Dashboard = () => {
   return (
     <div className="admin-container">
@@ -82,12 +83,12 @@ const Dashboard = () => {
               data={[12, 18]}
               bgColor={["hsl(340, 82%, 50%)", "rgba(53, 162, 235, 0.8)"]}
               cutout={90}
+              offset={[0.2]}
             />
             <p>
               <BiMaleFemale />
             </p>
           </div>
-          {/* Table */}
         </section>
       </main>
     </div>
