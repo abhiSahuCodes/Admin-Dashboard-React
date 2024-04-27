@@ -9,7 +9,7 @@ import {
   ChartData,
   ChartOptions,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -92,3 +92,43 @@ export const BarChart = ({ data_1=[], data_2=[], title_1, title_2, bgColor_1, bg
   };
   return <Bar options={options} data={data} />;
 };
+
+interface DoughnutChartProps {
+  labels: string[],
+  data: number[];
+  bgColor: string;
+  cutout?: number | string;
+  legends?: boolean;
+  offset: number[];
+}
+
+export const DoughnutChart = ({labels, data, bgColor, cutout, legends = true, offset}: DoughnutChartProps) => {
+
+  const doughnutData:ChartData<'doughnut', number[], string> = {
+    labels,
+    datasets: [
+      {
+        data,
+        backgroundColor: bgColor,
+        borderWidth: 0,
+        offset
+      },
+    ],
+  }
+
+  const doughnutOptions:ChartOptions<'doughnut'> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: legends,
+        position: 'bottom',
+        labels: {
+          padding: 40
+        }
+      },
+    },
+    cutout
+  }
+
+  return <Doughnut data={doughnutData} options={doughnutOptions}/>
+}
