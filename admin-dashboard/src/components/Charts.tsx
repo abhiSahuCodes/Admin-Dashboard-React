@@ -8,6 +8,7 @@ import {
   Legend,
   ChartData,
   ChartOptions,
+  ArcElement,
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
 
@@ -17,7 +18,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const months = [
@@ -96,7 +98,7 @@ export const BarChart = ({ data_1=[], data_2=[], title_1, title_2, bgColor_1, bg
 interface DoughnutChartProps {
   labels: string[],
   data: number[];
-  bgColor: string;
+  bgColor: string[];
   cutout?: number | string;
   legends?: boolean;
   offset: number[];
