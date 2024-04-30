@@ -4,21 +4,24 @@ import {
   Column,
   TableOptions,
   useSortBy,
+  usePagination
 } from "react-table";
 
 function TableHOC<T extends Object>(
   columns: Column<T>[],
   data: T[],
   containerClassname: string,
-  heading: string
+  heading: string,
+  showPagination: boolean = false
 ) {
   return function HOC() {
     const options: TableOptions<T> = {
       columns,
       data,
+      initialState: { pageSize: 4 },
     };
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable(options, useSortBy);
+    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow, nextPage, pageCount, gotoPage, state:{pageIndex}, previousPage, canNextPage, canPreviousPage } =
+      useTable(options, useSortBy, usePagination);
 
     return (
       <>
@@ -28,7 +31,7 @@ function TableHOC<T extends Object>(
             <thead>
               {headerGroups.map((headerGroup) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column: any) => (
+                  {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps(column.getSortByToggleProps())}
                     >
@@ -49,7 +52,7 @@ function TableHOC<T extends Object>(
               ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-              {rows.map((row) => {
+              {page.map((row) => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
@@ -63,6 +66,21 @@ function TableHOC<T extends Object>(
               })}
             </tbody>
           </table>
+          {
+            showPagination && (
+              <div className="table-pagination">
+                <button disabled={!canPreviousPage} onClick={() => gotoPage(0)}>First Page</button>
+                {" "}
+                <button disabled={!canPreviousPage} onClick={previousPage}>Previous</button>
+                {" "}
+                <span>{`${pageIndex + 1} of ${pageCount}`}</span>
+                {" "}
+                <button disabled={!canNextPage} onClick={nextPage}>Next</button>
+                {" "}
+                <button disabled={!canNextPage} onClick={() => gotoPage(pageCount - 1)}>Last Page</button>
+              </div>
+            )
+          }
         </div>
       </>
     );
