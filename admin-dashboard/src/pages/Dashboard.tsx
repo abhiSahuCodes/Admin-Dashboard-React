@@ -27,26 +27,30 @@ const Dashboard = () => {
           <img src={userImg} alt="User" />
         </div>
         <section className="widget-container">
-          <WidgetItem
+        <WidgetItem
             percent={40}
-            heading="Revenue"
-            value={400000000}
             amount={true}
-            color="rgb(0, 115, 255)"
+            value={340000}
+            heading="Revenue"
+            color="rgb(0,115,255)"
           />
           <WidgetItem
-            percent={40}
-            heading="Revenue"
-            value={40000}
-            amount={true}
-            color="rgb(0, 115, 255)"
+            percent={-14}
+            value={400}
+            heading="Users"
+            color="rgb(0 198 202)"
           />
           <WidgetItem
-            percent={40}
-            heading="Revenue"
-            value={4000}
-            amount={true}
-            color="rgb(0, 115, 255)"
+            percent={80}
+            value={23000}
+            heading="Transactions"
+            color="rgb(255 196 0)"
+          />
+          <WidgetItem
+            percent={30}
+            value={1000}
+            heading="Products"
+            color="rgb(76 0 255)"
           />
         </section>
         <section className="graph-container">

@@ -1,4 +1,10 @@
-import { useTable, Column, TableOptions } from "react-table";
+import { TbSortAscendingNumbers, TbSortDescendingNumbers } from "react-icons/tb";
+import {
+  useTable,
+  Column,
+  TableOptions,
+  useSortBy,
+} from "react-table";
 
 function TableHOC<T extends Object>(
   columns: Column<T>[],
@@ -12,7 +18,7 @@ function TableHOC<T extends Object>(
       data,
     };
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable(options);
+      useTable(options, useSortBy);
 
     return (
       <>
@@ -22,9 +28,21 @@ function TableHOC<T extends Object>(
             <thead>
               {headerGroups.map((headerGroup) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
-                    <th {...column.getHeaderProps()}>
+                  {headerGroup.headers.map((column: any) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
                       {column.render("Header")}
+                      {column.isSorted && (
+                        <span>
+                          {" "}
+                          {column.isSortedDesc ? (
+                            <TbSortDescendingNumbers />
+                          ) : (
+                            <TbSortAscendingNumbers />
+                          )}
+                        </span>
+                      )}
                     </th>
                   ))}
                 </tr>
