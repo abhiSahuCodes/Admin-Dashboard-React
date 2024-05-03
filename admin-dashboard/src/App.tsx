@@ -6,6 +6,9 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Products = lazy(() => import("./pages/Products"));
 const Customers = lazy(() => import("./pages/Customers"));
 const Transactions = lazy(() => import("./pages/Transactions"));
+const NewProduct = lazy(() => import ("./pages/management/NewProduct"));
+const ProductManagement = lazy(() => import ("./pages/management/ProductManagement"));
+const TransactionManagement = lazy(() => import ("./pages/management/TransactionManagement"));
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,20 @@ const router = createBrowserRouter([
       // Charts
       
       // Apps
+
+      // Management
+      {
+        path: "/admin/product/new",
+        element: <NewProduct />
+      },
+      {
+        path: "/admin/product/:id",
+        element: <ProductManagement />
+      },
+      {
+        path: "/admin/transaction/:id",
+        element: <TransactionManagement />
+      },
     ],
   },
 ]);
