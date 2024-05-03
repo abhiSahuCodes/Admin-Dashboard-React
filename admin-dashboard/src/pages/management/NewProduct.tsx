@@ -20,7 +20,8 @@ const NewProduct = () => {
         }
       };
     }
-
+    
+  }
     return (
       <div className="admin-container">
         <AdminSidebar />
@@ -62,8 +63,6 @@ const NewProduct = () => {
                 <label>Photo</label>
                 <input
                   type="file"
-                  placeholder="Photo"
-                  value={photo}
                   onChange={changeImageHandler}
                   required
                 />
@@ -76,6 +75,6 @@ const NewProduct = () => {
       </div>
     );
   };
-};
+
 
 export default NewProduct;

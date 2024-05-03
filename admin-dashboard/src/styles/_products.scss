@@ -19,3 +19,60 @@
   }
 }
 
+.product-management {
+  @include flex(row, center, unset);
+  padding: 4rem;
+  > article {
+    height: 85vh;
+    width: 100%;
+    padding: 2rem;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.216);
+
+    > form {
+      @include flex(column, unset, center, 2rem);
+      > h2 {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      > img {
+        @include square(6rem);
+        border-radius: 5px;
+        object-fit: cover;
+      }
+
+      > div {
+        width: 100%;
+        position: relative;
+        > label {
+          position: absolute;
+          left: 0;
+          top: -1.5rem;
+        }
+
+        > input {
+          @include inputStyle(
+            100%,
+            1rem,
+            unset,
+            1px solid rgba(13, 13, 13, 0.196)
+          );
+          border-radius: 5px;
+        }
+      }
+      > button {
+        padding: 1rem;
+        border: none;
+        background-color: rgb(5, 107, 224);
+        color: #fff;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
