@@ -1,7 +1,7 @@
 import AdminSidebar from "../../components/AdminSidebar";
 import { BarChart } from "../../components/Charts";
 
-const months = [
+export const months = [
   'January',
   'February',
   'March',

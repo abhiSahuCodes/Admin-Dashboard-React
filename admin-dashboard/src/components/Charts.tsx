@@ -9,6 +9,8 @@ import {
   ChartData,
   ChartOptions,
   ArcElement,
+  PointElement,
+  LineElement
 } from "chart.js";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 
@@ -19,7 +21,9 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  PointElement,
+  LineElement
 );
 
 const months = ["January", "February", "March", "April", "May", "June", "July"];
