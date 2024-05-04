@@ -63,7 +63,7 @@ const TransactionManagement = () => {
     <div className="admin-container">
       <AdminSidebar />
       <main className="product-management">
-        <section>
+        <section style={{padding: '2rem'}}>
           <h2>Order Items</h2>
           {order.orderItems.map((item) => (
             <ProductCard key={item._id} {...item} />
@@ -85,7 +85,7 @@ const TransactionManagement = () => {
 
           <h5>Status Info</h5>
           <p>
-            Status:
+            Status: {""}
             <span
               className={
                 status === "Delivered"
