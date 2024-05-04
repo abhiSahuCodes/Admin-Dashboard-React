@@ -1,5 +1,5 @@
-import AdminSidebar from "../../components/AdminSidebar"
-import { BarChart } from "../../components/Charts"
+import AdminSidebar from "../../components/AdminSidebar";
+import { BarChart } from "../../components/Charts";
 
 const months = [
   'January',
@@ -14,7 +14,7 @@ const months = [
   'October',
   'November',
   'December',
-]
+];
 
 const BarCharts = () => {
   return (
@@ -35,4 +35,4 @@ const BarCharts = () => {
   )
 }
 
-export default BarCharts
+export default BarCharts;

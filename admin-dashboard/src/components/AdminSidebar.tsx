@@ -1,4 +1,3 @@
-// import { IconType } from "react-icons";
 import { IconType } from "react-icons";
 import { AiFillFileText } from "react-icons/ai";
 import { FaChartBar, FaChartLine, FaChartPie, FaGamepad, FaStopwatch } from "react-icons/fa";

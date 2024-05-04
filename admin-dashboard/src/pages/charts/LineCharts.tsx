@@ -1,4 +1,4 @@
-import AdminSidebar from "../../components/AdminSidebar"
+import AdminSidebar from "../../components/AdminSidebar";
 
 const LineCharts = () => {
   return (
@@ -10,4 +10,4 @@ const LineCharts = () => {
   )
 }
 
-export default LineCharts
+export default LineCharts;

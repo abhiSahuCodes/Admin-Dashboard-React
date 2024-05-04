@@ -33,6 +33,7 @@ const router = createBrowserRouter([
         path: "/admin/transactions",
         element: <Transactions />,
       },
+
       // Charts
       {
         path: "/admin/chart/bar",
