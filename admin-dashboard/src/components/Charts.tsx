@@ -92,7 +92,7 @@ export const BarChart = ({ data_1=[], data_2=[], title_1, title_2, bgColor_1, bg
       },
     ],
   };
-  return <Bar options={options} data={data} />;
+  return <Bar width={horizontal ? '200%' : ''} options={options} data={data} />;
 };
 
 interface DoughnutChartProps {

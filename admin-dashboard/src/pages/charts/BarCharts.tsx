@@ -27,7 +27,7 @@ const BarCharts = () => {
           <h2>Top Selling Products & Top Customers</h2>
         </section>
         <section>
-          <BarChart horizontal={true} data_1={[220, 444, 343, 556, 778, 455, 990, 444, 122, 334, 890, 910 ]} data_2={[]} title_1="Products" title_2="Users" bgColor_1={`hsl(260, 50%, 30%)`}  bgColor_2="" labels={months}/>
+          <BarChart horizontal={true} data_1={[220, 444, 343, 556, 778, 455, 990, 444, 122, 334, 890, 910 ]} data_2={[]} title_1="Products" title_2="Users" bgColor_1={`hsl(360, 80%, 60%)`}  bgColor_2="" labels={months}/>
           <h2>Top Selling Products & Top Customers</h2>
         </section>
       </main>
