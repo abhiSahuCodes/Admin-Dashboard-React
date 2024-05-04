@@ -64,13 +64,13 @@ const DivSecond = ({ location }: { location: Location }) => {
           location={location}
         />
         <List
-          url="/admin/pie"
+          url="/admin/chart/pie"
           text="Pie"
           Icon={FaChartPie}
           location={location}
         />
         <List
-          url="/admin/line"
+          url="/admin/chart/line"
           text="Line"
           Icon={FaChartLine}
           location={location}

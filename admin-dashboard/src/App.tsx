@@ -9,6 +9,9 @@ const Transactions = lazy(() => import("./pages/Transactions"));
 const NewProduct = lazy(() => import ("./pages/management/NewProduct"));
 const ProductManagement = lazy(() => import ("./pages/management/ProductManagement"));
 const TransactionManagement = lazy(() => import ("./pages/management/TransactionManagement"));
+const BarCharts = lazy(() => import ("./pages/charts/BarCharts"));
+const PieCharts = lazy(() => import ("./pages/charts/PieCharts"));
+const LineCharts = lazy(() => import ("./pages/charts/LineCharts"));
 
 const router = createBrowserRouter([
   {
@@ -31,7 +34,19 @@ const router = createBrowserRouter([
         element: <Transactions />,
       },
       // Charts
-      
+      {
+        path: "/admin/chart/bar",
+        element: <BarCharts />
+      },
+      {
+        path: "/admin/chart/pie",
+        element: <PieCharts />
+      },
+      {
+        path: "/admin/chart/line",
+        element: <LineCharts />
+      },
+
       // Apps
 
       // Management
