@@ -10,7 +10,8 @@ import {
   ChartOptions,
   ArcElement,
   PointElement,
-  LineElement
+  LineElement,
+  Filler
 } from "chart.js";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 
@@ -23,7 +24,8 @@ ChartJS.register(
   Legend,
   ArcElement,
   PointElement,
-  LineElement
+  LineElement,
+  Filler
 );
 
 const months = ["January", "February", "March", "April", "May", "June", "July"];
@@ -227,6 +229,7 @@ data, label, bgColor, borderColor, labels = months,
     labels,
     datasets: [
       {
+        fill: true,
         label,
         data,
         backgroundColor: bgColor,
