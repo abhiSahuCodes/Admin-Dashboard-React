@@ -120,6 +120,7 @@
         background-color: rgb(15, 15, 15);
         color: #fff;
         font-size: 0.8rem;
+        @include flex;
       }
     }
   }

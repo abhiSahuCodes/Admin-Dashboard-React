@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
+
+const allLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const allNumbers = "1234567890";
+const allSymbols = "!@#$%^&*()_+{}";
 
 const Coupon = () => {
   const [size, setSize] = useState<number>(8);
@@ -10,7 +14,48 @@ const Coupon = () => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const [coupon, setCoupon] = useState<string>("");
-  const copyText = (coupon: string) => {  }
+
+  const copyText = async (coupon: string) => {
+    await window.navigator.clipboard.writeText(coupon);
+    setIsCopied(true);
+  };
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!includeNumbers && !includeCharacters && !includeSymbols) {
+      return alert("Please select at least one option");
+    }
+
+    let result: string = prefix || "";
+
+    const loopLength: number = size - result.length;
+
+    for (let i = 0; i < loopLength; i++) {
+      let entireString: string = "";
+
+      if (includeCharacters) {
+        entireString += allLetters;
+      }
+
+      if (includeNumbers) {
+        entireString += allNumbers;
+      }
+
+      if (includeSymbols) {
+        entireString += allSymbols;
+      }
+
+      const randomNum: number = ~~(Math.random() * entireString.length);
+
+      result += entireString[randomNum];
+    }
+    setCoupon(result);
+  };
+
+  useEffect(() => {
+    setIsCopied(false);
+  }, [coupon]);
 
   return (
     <div className="admin-container">
@@ -18,7 +63,7 @@ const Coupon = () => {
       <main className="dashboard-app-container">
         <h1>Coupon</h1>
         <section>
-          <form className="coupon-form">
+          <form className="coupon-form" onSubmit={submitHandler}>
             <input
               type="text"
               placeholder="Text to include"
