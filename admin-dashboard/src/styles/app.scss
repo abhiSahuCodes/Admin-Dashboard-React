@@ -155,6 +155,23 @@ a {
   }
 }
 
+.home-container {
+    width: 100%;
+    height: 100vh;
+    @include flex(row, center, center, 0);
+}
+
+.primary-button {
+    margin: 2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(0, 115, 255);
+    color: white;
+} 
+
 #hamburger {
   display: grid;
   place-items: center;
@@ -205,3 +222,4 @@ a {
     transform: rotateZ(360deg);
   }
 }
+
