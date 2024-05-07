@@ -1,21 +1,57 @@
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { AiFillFileText } from "react-icons/ai";
-import { FaChartBar, FaChartLine, FaChartPie, FaGamepad, FaStopwatch } from "react-icons/fa";
+import {
+  FaChartBar,
+  FaChartLine,
+  FaChartPie,
+  FaGamepad,
+  FaStopwatch,
+} from "react-icons/fa";
+import { HiMenu } from "react-icons/hi";
 import { IoIosPeople } from "react-icons/io";
-import { RiCoupon3Fill, RiDashboardFill, RiShoppingBag3Fill } from "react-icons/ri";
+import {
+  RiCoupon3Fill,
+  RiDashboardFill,
+  RiShoppingBag3Fill,
+} from "react-icons/ri";
 import { Link, useLocation, Location } from "react-router-dom";
 
 const AdminSidebar = () => {
   const location = useLocation();
 
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [phoneActive, setPhoneActive] = useState<boolean>(
+    window.innerWidth < 1100 
+  );
+
+  const resizeHandler = () => {
+
+      setPhoneActive(window.innerWidth < 1100);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', resizeHandler)
+    return () => {
+      window.removeEventListener('resize', resizeHandler)
+    }
+  })
 
   return (
-    <aside>
-      <h2>LogoName</h2>
-      <DivFirst location={location} />
-      <DivSecond location={location} />
-      <DivThird location={location} />
-    </aside>
+    <>
+      {phoneActive && !showModal && (
+        <button type="button" id="hamburger" onClick={() => setShowModal(true)}>
+          <HiMenu />
+        </button>
+      )}
+
+      <aside style={phoneActive ? {width: '20rem', height: '100vh', position: 'fixed', top: 0, left: showModal ? "0" : "-20rem", transition: 'all 0.5s'} : {}}>
+        <h2>LogoName</h2>
+        <DivFirst location={location} />
+        <DivSecond location={location} />
+        <DivThird location={location} phoneActive={phoneActive} setShowModal={setShowModal} />
+      </aside>
+    </>
   );
 };
 
@@ -81,7 +117,7 @@ const DivSecond = ({ location }: { location: Location }) => {
   );
 };
 
-const DivThird = ({ location }: { location: Location }) => {
+const DivThird = ({ location, phoneActive, setShowModal }: { location: Location, phoneActive: boolean, setShowModal: Dispatch<SetStateAction<boolean>> }) => {
   return (
     <div>
       <h5>Apps</h5>
@@ -105,6 +141,13 @@ const DivThird = ({ location }: { location: Location }) => {
           location={location}
         />
       </ul>
+      {phoneActive && (
+        <button
+          type="button"
+          id="close-sidebar"
+          onClick={() => setShowModal(false)}
+        >Close</button>
+      )}
     </div>
   );
 };
