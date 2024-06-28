@@ -87,13 +87,7 @@ const arr: DataType[] = [
     stock: 213,
     action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
   },
-  {
-    photo: <img src={img} alt="Shoes" />,
-    name: "Puma Shoes Air Jordan Cook Nigga 2023",
-    price: 690,
-    stock: 3,
-    action: <Link to="/admin/product/sajknaskd">Manage</Link>,
-  },
+
   {
     photo: <img src={img2} alt="Shoes" />,
     name: "Macbook",
@@ -101,6 +95,15 @@ const arr: DataType[] = [
     stock: 213,
     action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
   },
+
+  {
+    photo: <img src={img} alt="Shoes" />,
+    name: "Puma Shoes Air Jordan Cook Nigga 2023",
+    price: 690,
+    stock: 3,
+    action: <Link to="/admin/product/sajknaskd">Manage</Link>,
+  },
+
   {
     photo: <img src={img} alt="Shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
@@ -121,15 +124,23 @@ const Products = () => {
   const [data] = useState<DataType[]>(arr);
 
   const Table = useCallback(
-    TableHOC<DataType>(columns, data, "dashboard-product-box", "Products", true),
+    TableHOC<DataType>(
+      columns,
+      data,
+      "dashboard-product-box",
+      "Products",
+      true
+    ),
     []
   );
   return (
     <div className="admin-container">
       {/* Sidebar */}
       <AdminSidebar />
-      <main>{Table()}</main> 
-      <Link to="/admin/product/new" className="create-product-btn"><FaPlus /></Link>
+      <main>{Table()}</main>
+      <Link to="/admin/product/new" className="create-product-btn">
+        <FaPlus />
+      </Link>
     </div>
   );
 };
